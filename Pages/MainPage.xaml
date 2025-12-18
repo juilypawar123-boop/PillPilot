@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PillPilot.MainPage"
+             BackgroundColor="#071227">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30,0" Spacing="25">
+
+            <Image Source="copilot_pic.png"
+                   HeightRequest="185"
+                   Aspect="AspectFit"
+                   SemanticProperties.Description="PillPilot logo" 
+                   Margin="0,15,0,0"/>
+
+            <Label Text="PillPilot"
+                   Style="{StaticResource Headline}"
+                   HorizontalOptions="Center"
+                   SemanticProperties.HeadingLevel="Level1"
+                   TextColor="YellowGreen"
+                   FontAttributes="Bold"/>
+
+            <Label Text="Welcome to PillPilot — Your personalised heathcare co-pilot." 
+                   Margin="0,50"
+                   Style="{StaticResource SubHeadline}"
+                   HorizontalOptions="Center"
+                   SemanticProperties.HeadingLevel="Level2"
+                   TextColor="White"/>
+
+            <Label Text="Clear reminders | Safer routines | Better health" Margin="0.50"
+                   HorizontalOptions="Center"
+                   FontSize="18" 
+                   Opacity="0.75"
+                   TextColor="LightGray"/>
+
+            <Button x:Name="LoginBtn"
+                    Text="Log In" 
+                    FontSize="18" 
+                    FontAttributes="Bold" 
+                    Margin="500,80,500,0"
+                    HorizontalOptions="Fill"
+                    CornerRadius="12"
+                    Clicked="OnLoginClicked"
+                    BackgroundColor="Green"
+                    TextColor="Black"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

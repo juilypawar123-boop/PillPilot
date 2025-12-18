@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PillPilot.Pages.AddMedicationsPage"
+             Title="Update Medications"
+             BackgroundColor="LightBlue">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+            <Label
+            Text="Add your Medications here!"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" 
+            FontAttributes="Bold"
+            TextColor="#071227"
+            FontSize="24"
+                Margin="0,20,0,20"/>
+
+            <Entry x:Name="MedicationNameEntry" Placeholder="Medication Name" HeightRequest="80" TextColor="Black" PlaceholderColor="Black"/>
+            <Editor x:Name="Purpose" Placeholder="Purpose" HeightRequest="80" TextColor="Black" PlaceholderColor="Black"/>
+            <Editor x:Name="DosageAmount" Placeholder="Dosage Amount" HeightRequest="80" TextColor="Black" PlaceholderColor="Black"/>
+            <Editor x:Name="Instructions" Placeholder="Instructions" HeightRequest="80" TextColor="Black" PlaceholderColor="Black"/>
+            <Entry x:Name="LowStockWarning" Placeholder="Low Stock Warning" HeightRequest="80" TextColor="Black" PlaceholderColor="Black"/>
+            <Entry x:Name="RepeatPrescriptionNeeded" Placeholder="Repeat Prescription Needed" HeightRequest="80" TextColor="Black" PlaceholderColor="Black"/>
+
+            <Label Text="Start Date" TextColor="Black"/>
+            <DatePicker x:Name="StartDatePicker" TextColor="Black"/>
+
+            <Label Text="End Date" TextColor="Black"/>
+            <DatePicker x:Name="EndDatePicker" TextColor="Black"/>
+
+            <Label Text="AlarmTime" TextColor="Black"/>
+            <TimePicker x:Name="AlarmTimePicker" TextColor="Black"/>
+
+            <Entry x:Name="PrescribingDoctorName" Placeholder="Prescribing Doctor Name" HeightRequest="80" TextColor="Black" PlaceholderColor="Black" />
+            <Entry x:Name="PharmacyName" Placeholder="Pharmacy Name &amp; Location" HeightRequest="80" TextColor="Black" PlaceholderColor="Black"/>
+
+            <Picker x:Name="FormOfMedication"
+                    TitleColor="Black"
+                    Title="Form of Medication">
+                <Picker.Items>
+                    <x:String>Tablet</x:String>
+                    <x:String>Capsule</x:String>
+                    <x:String>Syrup</x:String>
+                    <x:String>Injection</x:String>
+                    <x:String>Drops</x:String>
+                    <x:String>Inhaler</x:String>
+                </Picker.Items>
+            </Picker>
+
+            <Picker x:Name="MedicationFrequency"
+                    TitleColor="Black"
+                   Title="Medication Frequency">
+                <Picker.Items>
+                    <x:String>Once a day</x:String>
+                    <x:String>Twice a day</x:String>
+                    <x:String>Thrice a day</x:String>
+                    <x:String>Every 4 hrs</x:String>
+                    <x:String>Every 8 hrs</x:String>
+                </Picker.Items>
+            </Picker>
+
+            <Label Text="Uploaded Files:" FontAttributes="Bold" FontSize="18" Margin="0,20,0,5" TextColor="Black"/>
+                <CollectionView x:Name="FilesCollectionView">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame Padding="10" Margin="5" BorderColor="LightGray" CornerRadius="8">
+                                <VerticalStackLayout>
+                                    <Label Text="{Binding FileName}" LineBreakMode="WordWrap"/>
+                                </VerticalStackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+            <Label x:Name="SelectedFileLabel"
+                   Text=""
+                   TextColor="Black"
+                   FontAttributes="Italic"
+                   Margin="0,5,0,5"/>
+
+            <Button Text="Upload File"
+                    TextColor="Black"
+                    BackgroundColor="DodgerBlue"
+                    HorizontalOptions="Start" 
+                    Clicked="OnUploadFileClicked"/>
+
+            <Editor x:Name="MedicationDescription" Placeholder="Medication Description" HeightRequest="80" TextColor="Black"/>
+           
+            <Button Text="Save Medication"
+                TextColor="Black"
+                Background="DodgerBlue"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                Clicked="OnSaveMedication_Clicked"
+                Margin="0,20,0,20"/>
+
+        </VerticalStackLayout>
+
+    </ScrollView>
+</ContentPage>

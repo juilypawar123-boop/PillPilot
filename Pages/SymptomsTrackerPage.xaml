@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="PillPilot.Pages.SymptomsTrackerPage"
+    Title="Symptoms Tracker"
+    BackgroundColor="#071227"
+    Padding="12">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="16">
+
+            <!-- Header -->
+            <VerticalStackLayout Spacing="7" HorizontalOptions="Center">
+                <Label Text="Symptoms Tracker"
+                       FontSize="28"
+                       FontAttributes="Bold"
+                       TextColor="White" />
+                <Label Text="Log symptoms quickly. See trends. Get insights."
+                       FontSize="13"
+                       TextColor="#9FB0C8" />
+            </VerticalStackLayout>
+
+            <!-- Top area: quick tiles + streak -->
+            <Grid ColumnDefinitions="*,120" RowDefinitions="Auto">
+                <!-- Horizontal tiles -->
+                <ScrollView Orientation="Horizontal" Grid.Column="0" HorizontalScrollBarVisibility="Never">
+                    <HorizontalStackLayout Spacing="15" Padding="10">
+                        <!-- Each Frame has GestureRecognizers; CommandParameter used -->
+                        <Frame CornerRadius="12" BackgroundColor="#0E2530" Padding="12" HasShadow="True" Margin="20,0,0,0">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="QuickTile_Tapped" CommandParameter="Headache" />
+                            </Frame.GestureRecognizers>
+                            <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Spacing="4">
+                                <Label Text="🤕" FontSize="28" HorizontalOptions="Center" />
+                                <Label Text="Headache" TextColor="White" FontSize="13" HorizontalOptions="Center"/>
+                            </VerticalStackLayout>
+                        </Frame>
+
+                        <Frame CornerRadius="12" BackgroundColor="#0E2530" Padding="12" HasShadow="True">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="QuickTile_Tapped" CommandParameter="Fatigue" />
+                            </Frame.GestureRecognizers>
+                            <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Spacing="4">
+                                <Label Text="😴" FontSize="28" HorizontalOptions="Center" />
+                                <Label Text="Fatigue" TextColor="White" FontSize="13" HorizontalOptions="Center"/>
+                            </VerticalStackLayout>
+                        </Frame>
+
+                        <Frame CornerRadius="12" BackgroundColor="#0E2530" Padding="12" HasShadow="True">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="QuickTile_Tapped" CommandParameter="Nausea" />
+                            </Frame.GestureRecognizers>
+                            <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Spacing="4">
+                                <Label Text="🤢" FontSize="28" HorizontalOptions="Center" />
+                                <Label Text="Nausea" TextColor="White" FontSize="13" HorizontalOptions="Center"/>
+                            </VerticalStackLayout>
+                        </Frame>
+
+                        <Frame CornerRadius="12" BackgroundColor="#0E2530" Padding="12" HasShadow="True">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="QuickTile_Tapped" CommandParameter="Dizziness" />
+                            </Frame.GestureRecognizers>
+                            <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Spacing="4">
+                                <Label Text="😵" FontSize="28" HorizontalOptions="Center" />
+                                <Label Text="Dizziness" TextColor="White" FontSize="13" HorizontalOptions="Center"/>
+                            </VerticalStackLayout>
+                        </Frame>
+
+                        <Frame CornerRadius="12" BackgroundColor="#0E2530" Padding="12" HasShadow="True">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="QuickTile_Tapped" CommandParameter="Pain" />
+                            </Frame.GestureRecognizers>
+                            <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Spacing="4">
+                                <Label Text="🩺" FontSize="28" HorizontalOptions="Center" />
+                                <Label Text="Pain" TextColor="White" FontSize="13" HorizontalOptions="Center"/>
+                            </VerticalStackLayout>
+                        </Frame>
+                    </HorizontalStackLayout>
+                </ScrollView>
+
+                <!-- Streak / compact progress -->
+                <Frame Grid.Column="1" BackgroundColor="#071827" CornerRadius="12" Padding="10" HasShadow="True" HorizontalOptions="End" Margin="0,15,40,0">
+                    <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                        <Label Text="Logging Streak" TextColor="#9FB0C8" FontSize="11" HorizontalOptions="Center"/>
+                        <Frame BackgroundColor="#092435" CornerRadius="40" WidthRequest="80" HeightRequest="80" Padding="8">
+                            <Label x:Name="StreakLabel" Text="0d" TextColor="White" FontSize="20" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                        </Frame>
+                        <Label x:Name="StreakSubtitle" Text="Days logged (7d)" FontSize="11" TextColor="#9FB0C8" HorizontalOptions="Center" Margin="0,6,0,0"/>
+                    </VerticalStackLayout>
+                </Frame>
+            </Grid>
+
+
+            <!-- Quick Entry -->
+            <Frame CornerRadius="12" BackgroundColor="#07101A" Padding="12" HasShadow="True" Margin="20,10,40,0">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Quick Entry" FontSize="16" TextColor="White"/>
+                    <Entry x:Name="QuickSymptomName" Placeholder="Symptom (e.g., Headache)" TextColor="White" BackgroundColor="#08131A"/>
+                    <HorizontalStackLayout Spacing="30" VerticalOptions="Center">
+                        <Label Text="Severity" TextColor="#C8D3DF" VerticalOptions="Center"/>
+                        <Slider x:Name="SeveritySlider" Minimum="0" Maximum="200" Value="50" HorizontalOptions="FillAndExpand"/>
+                        <Label x:Name="SeverityValue" Text="50" TextColor="White" WidthRequest="150" HorizontalTextAlignment="Center"/>
+                    </HorizontalStackLayout>
+
+                    <Picker x:Name="SymptomTypePicker" Title="Type (throbbing, sharp)" TextColor="White">
+                        <Picker.Items>
+                            <x:String>Throbbing</x:String>
+                            <x:String>Sharp</x:String>
+                            <x:String>Dull</x:String>
+                            <x:String>Burning</x:String>
+                            <x:String>Tingling</x:String>
+                        </Picker.Items>
+                    </Picker>
+
+                    <Editor x:Name="NotesEditor" Placeholder="Notes (optional)" HeightRequest="80" BackgroundColor="#08131A" TextColor="White"/>
+                    <HorizontalStackLayout Spacing="10">
+                        <Button Text="Save Symptom" BackgroundColor="#1E90FF" TextColor="White" Clicked="SaveSymptom_Clicked" HorizontalOptions="FillAndExpand"/>
+                        <Button Text="Voice" BackgroundColor="#253547" TextColor="White" Clicked="Voice_Clicked" WidthRequest="100"/>
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Heatmap (last 28 days) -->
+            <Frame CornerRadius="12" BackgroundColor="#071421" Padding="10" HasShadow="True" Margin="20,10,40,0">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Last 28 days — heatmap" TextColor="#C8D3DF" FontSize="14"/>
+                    <Grid x:Name="HeatmapGrid" ColumnDefinitions="*,*,*,*,*,*,*" RowSpacing="6" ColumnSpacing="6"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Insights row -->
+            <HorizontalStackLayout Spacing="10">
+                <Frame CornerRadius="12" BackgroundColor="#0F2430" Padding="12" HasShadow="True" HorizontalOptions="FillAndExpand" Margin="20,10,40,0">
+                    <VerticalStackLayout>
+                        <Label Text="Top Symptom (28d)" FontSize="12" TextColor="#C8D3DF"/>
+                        <Label x:Name="TopSymptomLabel" Text="—" FontSize="20" TextColor="White" FontAttributes="Bold"/>
+                    </VerticalStackLayout>
+                </Frame>
+
+                <Frame CornerRadius="12" BackgroundColor="#0F2430" Padding="12" HasShadow="True" HorizontalOptions="FillAndExpand">
+                    <VerticalStackLayout>
+                        <Label Text="Avg Severity (7d)" FontSize="12" TextColor="#C8D3DF"/>
+                        <Label x:Name="AvgSeverityLabel" Text="0" FontSize="20" TextColor="White" FontAttributes="Bold"/>
+                    </VerticalStackLayout>
+                </Frame>
+            </HorizontalStackLayout>
+
+            <!-- Recent logs -->
+            <Label Text="Recent logs" TextColor="#C8D3DF" FontSize="14" />
+            <CollectionView x:Name="RecentLogs" SelectionMode="None" HeightRequest="300" Margin="20,10,0,0">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame CornerRadius="10" BackgroundColor="#06101A" Padding="10" Margin="0,6" HasShadow="False" BorderColor="#13232F">
+                            <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto">
+                                <VerticalStackLayout>
+                                    <Label Text="{Binding SymptomName}" TextColor="White" FontSize="16"/>
+                                    <Label Text="{Binding Timestamp, StringFormat='{}{0:dd MMM yyyy HH:mm}'}" TextColor="#9FB0C8" FontSize="12"/>
+                                    <Label Text="{Binding Severity, StringFormat='Severity: {0}'}" TextColor="#9FB0C8" FontSize="12"/>
+                                    <Label Text="{Binding SymptomType}" TextColor="#9FB0C8" FontSize="12"/>
+                                    <Label Text="{Binding Location}" TextColor="#9FB0C8" FontSize="12"/>
+                                </VerticalStackLayout>
+
+                                <Button Grid.Column="1" Text="Details" BackgroundColor="#1E90FF" TextColor="White" Clicked="ViewDetails_Clicked"/>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

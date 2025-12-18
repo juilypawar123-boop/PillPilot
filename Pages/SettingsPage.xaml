@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PillPilot.Pages.SettingsPage"
+             Title="Settings"
+             BackgroundColor="#071227">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="24">
+
+            <!-- Notifications -->
+            <Frame Padding="16" CornerRadius="14" BackgroundColor="LightPink">
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="Notification Settings" FontSize="18" FontAttributes="Bold"/>
+
+                    <Grid ColumnDefinitions="*,Auto">
+                        <Label Text="Enable Notifications" VerticalOptions="Center"/>
+                        <Switch Grid.Column="1" IsToggled="{Binding NotificationsEnabled}"/>
+                    </Grid>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Reminder Sound -->
+            <Frame Padding="16" CornerRadius="14" BackgroundColor="LightPink">
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="Reminder Sound" FontSize="18" FontAttributes="Bold"/>
+
+                    <Picker Title="Select Sound"
+                            ItemsSource="{Binding ReminderSounds}"
+                            SelectedItem="{Binding SelectedReminderSound}" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Daily Summary Toggle -->
+            <Frame Padding="16" CornerRadius="14" BackgroundColor="LightPink">
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="Daily Summary" FontSize="18" FontAttributes="Bold"/>
+
+                    <Grid ColumnDefinitions="*,Auto">
+                        <Label Text="Enable Daily Summary" VerticalOptions="Center"/>
+                        <Switch Grid.Column="1" IsToggled="{Binding DailySummaryEnabled}"/>
+                    </Grid>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Snooze Time -->
+            <Frame Padding="16" CornerRadius="14" BackgroundColor="LightPink">
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="Snooze Time" FontSize="18" FontAttributes="Bold"/>
+
+                    <Picker Title="Select Snooze Duration"
+                            ItemsSource="{Binding SnoozeOptions}"
+                            SelectedItem="{Binding SelectedSnoozeTime}" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Daily Summary Time -->
+            <Frame Padding="16" CornerRadius="14" BackgroundColor="LightPink">
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="Daily Summary Time" FontSize="18" FontAttributes="Bold"/>
+
+                    <TimePicker Time="{Binding SummaryTime}" Format="HH:mm"/>
+                </VerticalStackLayout>
+            </Frame>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

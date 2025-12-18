@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="PillPilot.Pages.AnalyticsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Analytics"
+    BackgroundColor="#071227">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="20" Padding="20">
+
+            <!-- KPI Cards -->
+            <Grid ColumnDefinitions="*,*,*" ColumnSpacing="12">
+                <Frame Grid.Column="0" Padding="12" CornerRadius="12" BackgroundColor="{DynamicResource SecondaryContainer}">
+                    <VerticalStackLayout>
+                        <Label Text="Adherence" FontSize="12" Opacity="0.7"/>
+                        <Label Text="{Binding AdherenceRate}" FontSize="24" FontAttributes="Bold"/>
+                    </VerticalStackLayout>
+                </Frame>
+
+                <Frame Grid.Column="1" Padding="12" CornerRadius="12" BackgroundColor="{DynamicResource SecondaryContainer}">
+                    <VerticalStackLayout>
+                        <Label Text="Missed Doses" FontSize="12" Opacity="0.7"/>
+                        <Label Text="{Binding MissedDoses}" FontSize="24" FontAttributes="Bold"/>
+                    </VerticalStackLayout>
+                </Frame>
+
+                <Frame Grid.Column="2" Padding="12" CornerRadius="12" BackgroundColor="{DynamicResource SecondaryContainer}">
+                    <VerticalStackLayout>
+                        <Label Text="Avg Delay" FontSize="12" Opacity="0.7"/>
+                        <Label Text="{Binding AverageDelay}" FontSize="24" FontAttributes="Bold"/>
+                    </VerticalStackLayout>
+                </Frame>
+            </Grid>
+
+            <!-- Chart Placeholder -->
+            <Frame Padding="20" CornerRadius="16" BackgroundColor="{DynamicResource SurfaceContainer}">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Adherence Trend" FontSize="18" FontAttributes="Bold"/>
+                    <BoxView HeightRequest="160" BackgroundColor="#E0E0E0"
+                             CornerRadius="8"/>
+                    <Label Text="(Chart placeholder – bind your chart library here)"
+                           FontSize="10" HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Consistency Ranking -->
+            <VerticalStackLayout>
+                <Label Text="Medication Consistency" FontSize="18" FontAttributes="Bold" TextColor="Green" HorizontalOptions="Center"/>
+
+                <CollectionView ItemsSource="{Binding MedicationScores}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame Padding="12" Margin="20,15,40,10" CornerRadius="12"
+                                   BackgroundColor="{DynamicResource SurfaceContainerLow}">
+                                <Grid ColumnDefinitions="*,Auto">
+                                    <Label Text="{Binding Name}" FontSize="16"/>
+                                    <Label Grid.Column="1" Text="{Binding Score}"
+                                           FontAttributes="Bold" FontSize="16"/>
+                                </Grid>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </VerticalStackLayout>
+
+            <!-- Refill Forecast -->
+            <VerticalStackLayout>
+                <Label Text="Refill Forecast" FontSize="18" FontAttributes="Bold" TextColor="Green" HorizontalOptions="Center"/>
+
+                <CollectionView ItemsSource="{Binding RefillItems}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame Padding="12" Margin="20,15,40,10" CornerRadius="12"
+                                   BackgroundColor="{DynamicResource SurfaceContainerLow}">
+                                <HorizontalStackLayout>
+                                    <Label Text="{Binding Name}" FontSize="16"/>
+                                    <Label Text=" • " FontSize="16"/>
+                                    <Label Text="{Binding DaysLeft}" FontSize="16"/>
+                                </HorizontalStackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </VerticalStackLayout>
+
+            <!-- Alert Summary -->
+            <Frame Padding="16" CornerRadius="12" BackgroundColor="{DynamicResource SurfaceContainerLow}" Margin="20,15,40,25">
+                <VerticalStackLayout Spacing="4">
+                    <Label Text="Alerts Summary" FontSize="16" FontAttributes="Bold"/>
+                    <Label Text="{Binding AlertSummary}" FontSize="14"/>
+                </VerticalStackLayout>
+            </Frame>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

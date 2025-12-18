@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:microcharts="clr-namespace:Microcharts.Maui;assembly=Microcharts.Maui"
+             x:Class="PillPilot.Pages.HealthOverviewPage"
+             BackgroundColor="#071227"
+             Title="Health Overview">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+
+            <Label Text="PillPilot"
+                   FontSize="28"
+                   HorizontalOptions="Center"
+                   TextColor="LawnGreen"
+                   Margin="0,10,0,10"/>
+            <Label Text="Welcome to Your Daily Health Companion"
+                   FontSize="18"
+                   HorizontalOptions="Center"
+                   TextColor="White"
+                   Margin="0,0,0,20"/>
+ 
+            <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Always" HorizontalOptions="Center">
+                <HorizontalStackLayout Spacing="10" Padding="10">
+                    <Button Text="Overview" TextColor="White" BackgroundColor="#2A2A3F" Clicked="Overview_Clicked"/>
+                    <Button Text="Add Medications" TextColor="White" BackgroundColor="#2A2A3F" Clicked="AddMedications_Clicked"/>
+                    <Button Text="Medication Insights" TextColor="White" BackgroundColor="#2A2A3F" Clicked="MedicationInsights_Clicked"/>
+                    <Button Text="Dose Schedule" TextColor="White" BackgroundColor="#2A2A3F" Clicked="DoseSchedule_Clicked"/>
+                    <Button Text="Alerts" TextColor="White" BackgroundColor="#2A2A3F" Clicked="Alerts_Clicked"/>
+                    <Button Text="Settings" TextColor="White" BackgroundColor="#2A2A3F" Clicked="Settings_Clicked"/>
+                    <Button Text="Symptoms Tracker" TextColor="White" BackgroundColor="#2A2A3F" Clicked="SymtomsTracker_Clicked"/>
+                    <Button Text="Analytics" TextColor="White" BackgroundColor="#2A2A3F" Clicked="Analytics_Clicked"/>
+                    <Button Text="Log Out" TextColor="White" BackgroundColor="#2A2A3F" Clicked="LogOut_Clicked"/>
+                </HorizontalStackLayout>
+            </ScrollView>
+
+            <Frame BackgroundColor="#0F3D0F" CornerRadius="20" Padding="20" HasShadow="True" HorizontalOptions="Center" WidthRequest="400" HeightRequest="350" Margin="0,15,0,15">
+                <VerticalStackLayout HorizontalOptions="Center" Spacing="10">
+                    <Label Text="Daily Wellness Score" FontSize="20" TextColor="White" HorizontalOptions="Center"/>
+                    <Frame WidthRequest="150" HeightRequest="150" CornerRadius="75" BackgroundColor="#2E2E40" Padding="0" Margin="0,15,0,15">
+                        <Grid>
+                            <Label Text="78" FontSize="48" TextColor="#8CC6FF" VerticalOptions="Center" HorizontalOptions="Center"/>
+                            <Label Text="/ 100" FontSize="18" TextColor="LightGray" VerticalOptions="End" HorizontalOptions="Center" Margin="0,0,0,15"/>
+                        </Grid>
+                    </Frame>
+                    <Label Text="Based on adherence, sleep &amp; hydration." FontSize="14" TextColor="#AAAAAA" HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <Frame BackgroundColor="#26263A" CornerRadius="15" Padding="15">
+                <VerticalStackLayout>
+                    <Label Text="Daily Tip" FontSize="20" TextColor="White"/>
+                    <Label Text="Consistency is the best medicine. Keep going." TextColor="#D1D1FF" FontSize="16"/>
+                </VerticalStackLayout>
+            </Frame>
+            
+            <VerticalStackLayout Spacing="10">
+
+                <Frame BackgroundColor="#0F3D0F" CornerRadius="15" Padding="15">
+                    <VerticalStackLayout>
+                        <Label Text="Upcoming Dose" FontSize="20" TextColor="White"/>
+                        <Label Text="Amlodipine - 10mg" TextColor="#C8FFC8" FontSize="16"/>
+                        <Label Text="At 14:00 PM" TextColor="#A5E6A5" FontSize="14"/>
+                    </VerticalStackLayout>
+                </Frame>
+
+                <Frame BackgroundColor="#4B0000" CornerRadius="15" Padding="15">
+                    <VerticalStackLayout>
+                        <Label Text="Missed Dose" FontSize="20" TextColor="White"/>
+                        <Label Text="Metformin - 500mg" TextColor="#FFB3B3" FontSize="16"/>
+                        <Label Text="Missed at 09:00 AM" TextColor="#FF9999" FontSize="14"/>
+                    </VerticalStackLayout>
+                </Frame>
+
+                <Frame BackgroundColor="#1A2A40" CornerRadius="15" Padding="15">
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="Hydration Tracker" FontSize="20" TextColor="White"/>
+                        <ProgressBar Progress="0.5" BackgroundColor="#33475B" ProgressColor="#4DA6FF"/>
+                        <Label Text="4 / 8 glasses today" TextColor="White"/>
+                    </VerticalStackLayout>
+                </Frame>
+
+                <Frame BackgroundColor="DarkMagenta" CornerRadius="15" Padding="15">
+                    <VerticalStackLayout Spacing="5">
+                        <Label Text="Sleep Summary" FontSize="20" TextColor="White"/>
+                        <Label Text="6.5 hrs last night" TextColor="#B4B4FF"/>
+                    </VerticalStackLayout>
+                </Frame>
+
+                <Frame BackgroundColor="#1E1E2D" CornerRadius="15" Padding="15">
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="Weekly Adherence Trend" FontSize="20" TextColor="White"/>
+
+                        <StackLayout Spacing="5">
+                            <Label Text="Mon - 80%" TextColor="White"/>
+                            <ProgressBar Progress="0.8" ProgressColor="#4DA6FF" />
+                        </StackLayout>
+
+                        <StackLayout Spacing="5">
+                            <Label Text="Tue - 70%" TextColor="White"/>
+                            <ProgressBar Progress="0.7" ProgressColor="#4DA6FF" />
+                        </StackLayout>
+
+                        <StackLayout Spacing="5">
+                            <Label Text="Wed - 90%" TextColor="White"/>
+                            <ProgressBar Progress="0.9" ProgressColor="#4DA6FF" />
+                        </StackLayout>
+
+                    </VerticalStackLayout>
+                </Frame>
+                <Frame BackgroundColor="#1E1E2D" CornerRadius="15" Padding="15" HorizontalOptions="Center" HeightRequest="350" WidthRequest="400">
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="Hydration Overview (Week)" FontSize="20" TextColor="White" HorizontalOptions="Center"/>
+
+                        <HorizontalStackLayout Spacing="10" VerticalOptions="EndAndExpand" HorizontalOptions="Center">
+
+                            <!-- Monday -->
+                            <VerticalStackLayout Spacing="5" VerticalOptions="End" Margin=" 0,170,0,0">
+                                <BoxView HeightRequest="60" WidthRequest="30" Color="#4DA6FF" VerticalOptions="End"/>
+                                <Label Text="Mon" TextColor="White" HorizontalOptions="Center"/>
+                            </VerticalStackLayout>
+
+                            <!-- Tuesday -->
+                            <VerticalStackLayout Spacing="5" VerticalOptions="End" Margin=" 0,100,0,0">
+                                <BoxView HeightRequest="140" WidthRequest="30" Color="#4DA6FF" VerticalOptions="End"/>
+                                <Label Text="Tue" TextColor="White" HorizontalOptions="Center"/>
+                            </VerticalStackLayout>
+
+                            <!-- Wednesday -->
+                            <VerticalStackLayout Spacing="5" VerticalOptions="End" Margin=" 0,100,0,0">
+                                <BoxView HeightRequest="90" WidthRequest="30" Color="#4DA6FF" VerticalOptions="End"/>
+                                <Label Text="Wed" TextColor="White" HorizontalOptions="Center"/>
+                            </VerticalStackLayout>
+
+                            <!-- Thursday -->
+                            <VerticalStackLayout Spacing="5" VerticalOptions="End" Margin=" 0,100,0,0">
+                                <BoxView HeightRequest="50" WidthRequest="30" Color="#4DA6FF" VerticalOptions="End"/>
+                                <Label Text="Thu" TextColor="White" HorizontalOptions="Center"/>
+                            </VerticalStackLayout>
+
+                            <!-- Friday -->
+                            <VerticalStackLayout Spacing="5" VerticalOptions="End" Margin=" 0,100,0,0">
+                                <BoxView HeightRequest="30" WidthRequest="30" Color="#4DA6FF" VerticalOptions="End"/>
+                                <Label Text="Fri" TextColor="White" HorizontalOptions="Center"/>
+                            </VerticalStackLayout>
+
+                            <!-- Saturday -->
+                            <VerticalStackLayout Spacing="5" VerticalOptions="End" Margin=" 0,100,0,0">
+                                <BoxView HeightRequest="70" WidthRequest="30" Color="#4DA6FF" VerticalOptions="End"/>
+                                <Label Text="Sat" TextColor="White" HorizontalOptions="Center"/>
+                            </VerticalStackLayout>
+
+                            <!-- Sunday -->
+                            <VerticalStackLayout Spacing="5" VerticalOptions="End" Margin=" 0,100,0,0">
+                                <BoxView HeightRequest="50" WidthRequest="30" Color="#4DA6FF" VerticalOptions="End"/>
+                                <Label Text="Sun" TextColor="White" HorizontalOptions="Center"/>
+                            </VerticalStackLayout>
+
+            
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
+                </Frame>
+
+
+                <Frame BackgroundColor="#14303F" CornerRadius="15" Padding="15">
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="3-Day Medication Forecast" FontSize="20" TextColor="White"/>
+                        <Label Text="Tomorrow: 2 doses" TextColor="#B8E6FF"/>
+                        <Label Text="Day After: 1 dose" TextColor="#B8E6FF"/>
+                        <Label Text="In 3 Days: 3 doses" TextColor="#B8E6FF"/>
+                    </VerticalStackLayout>
+                </Frame>
+
+                <Frame BackgroundColor="#1F2F1F" CornerRadius="15" Padding="15">
+                    <VerticalStackLayout Spacing="5">
+                        <Label Text="Adherence Streak" FontSize="20" TextColor="White"/>
+                        <Label Text="4 days in a row!" TextColor="#A3F7A3"/>
+                    </VerticalStackLayout>
+                </Frame>
+
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

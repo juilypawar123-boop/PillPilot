@@ -1,0 +1,65 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PillPilot.Pages.LogInPage"
+             Title="Log In"
+             BackgroundColor="#071227">
+
+    <VerticalStackLayout Padding="20" Spacing="20" VerticalOptions="Center" HorizontalOptions="Center">
+
+        <Label Text="Log In to Health Overview"
+               TextColor="LawnGreen"
+               FontAttributes="Bold"
+               HorizontalOptions="Center"
+               FontSize="24"
+               Margin="0,15,0,15"/>
+        
+        <Entry x:Name="EmailEntry"
+               Placeholder="Email"
+               Keyboard="Email"
+               HeightRequest="55"
+               HorizontalOptions="FillAndExpand"
+               TextColor="White"/>
+
+        <Entry x:Name="PasswordEntry"
+               Placeholder="Password"
+               IsPassword="True"
+               HeightRequest="55"
+               HorizontalOptions="FillAndExpand"
+               Margin="0,20,0,10"
+               Grid.Column="0" 
+               TextColor="White"/>
+
+        <ImageButton x:Name="TogglePasswordButton"
+                 Grid.Column="1"
+                 Source="eye_closed.png"
+                 BackgroundColor="Transparent"
+                 Clicked="OnTogglePasswordClicked"
+                 HorizontalOptions="End"
+                 VerticalOptions="Center"
+                 WidthRequest="28"
+                 HeightRequest="28" />
+
+        <Button Text="Login"
+                Clicked="OnLoginClicked"
+                VerticalOptions="Center"
+                HorizontalOptions="FillAndExpand"
+                Margin="200,20,200,20"
+                CornerRadius="20" />
+
+        <Label Text="Create Your Account"
+               TextColor="White"
+               VerticalOptions="Center"
+               HorizontalOptions="Center"
+               Margin="400,35,400,35" />
+
+        <Button Text="Sign Up"
+                TextColor="Black"
+                Clicked="OnSignUpClicked"
+                VerticalOptions="Center"
+                HorizontalOptions="CenterAndExpand"
+                Margin="100,10,100,10"
+                BackgroundColor="Green"/>
+
+    </VerticalStackLayout>
+
+</ContentPage>

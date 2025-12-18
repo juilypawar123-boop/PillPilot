@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PillPilot.Pages.SetAlertsPage"
+             Title="Set Alerts"
+             BackgroundColor="#071227">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+            <Label Text="Set Medication Alerts" FontSize="22" FontAttributes="Bold" HorizontalOptions="Center" TextColor="YellowGreen" Margin="0,20,0,20"/>
+
+            <Entry x:Name="MedicationNameEntry" Placeholder="Medication Name" TextColor="White"/>
+            <Editor x:Name="PurposeEntry" Placeholder="Purpose" TextColor="White"/>
+            <Editor x:Name="InstructionsEntry" Placeholder="Instructions" TextColor="White"/>
+
+            <Label Text="Start Date" TextColor="White"/>
+            <DatePicker x:Name="StartDatePicker" TextColor="White"/>
+
+            <Label Text="End Date" TextColor="white"/>
+            <DatePicker x:Name="EndDatePicker" TextColor="White"/>
+
+            <Label Text="Alert Time" TextColor="White"/>
+            <TimePicker x:Name="AlertTimePicker" TextColor="White"/>
+
+            <Button Text="Save Alert"
+                    BackgroundColor="#4CAF50"
+                    TextColor="White"
+                    Clicked="OnSaveAlertClicked"
+                    HorizontalOptions="Center"
+                    Margin="0,20,0,0"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PillPilot.Pages.SignUpPage"
+             Title="Create Account"
+             BackgroundColor="#071227">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30" Spacing="20">
+
+            <Label Text="Create Your Account"
+                   FontSize="28"
+                   TextColor="White"
+                   HorizontalOptions="Center"
+                   Margin="0,20,0,20"/>
+
+            <Entry x:Name="NameEntry"
+                   Placeholder="Name"
+                   TextColor="White"
+                   PlaceholderColor="Gray"
+                   Keyboard="Default"
+                   HeightRequest="50"/>
+
+            <Entry x:Name="EmailEntry"
+                   Placeholder="Email"
+                   TextColor="White"
+                   PlaceholderColor="Gray"
+                   Keyboard="Email"
+                   HeightRequest="50"/>
+
+            <Grid ColumnDefinitions="*,50">
+                <Entry x:Name="PasswordEntry"
+                       Placeholder="Password"
+                       IsPassword="True"
+                       TextColor="White"
+                       PlaceholderColor="Gray"
+                       HeightRequest="50"/>
+
+                <ImageButton Grid.Column="1"
+                             x:Name="TogglePasswordButton"
+                             Source="eye_closed.png"
+                             BackgroundColor="Transparent"
+                             Clicked="OnTogglePasswordClicked"
+                             WidthRequest="35"
+                             HeightRequest="35"
+                             HorizontalOptions="Center"
+                             VerticalOptions="Center" />
+            </Grid>
+
+            <Grid ColumnDefinitions="*,50">
+                <Entry x:Name="ConfirmPasswordEntry"
+                       Placeholder="Confirm Password"
+                       IsPassword="True"
+                       TextColor="White"
+                       PlaceholderColor="Gray"
+                       HeightRequest="50"/>
+
+                <ImageButton Grid.Column="1"
+                             x:Name="ToggleConfirmPasswordButton"
+                             Source="eye_closed.png"
+                             BackgroundColor="Transparent"
+                             Clicked="OnToggleConfirmPasswordClicked"
+                             WidthRequest="35"
+                             HeightRequest="35"
+                             HorizontalOptions="Center"
+                             VerticalOptions="Center" />
+            </Grid>
+
+            <Button Text="Create Account"
+                    Clicked="OnSignUpClicked"
+                    BackgroundColor="Green"
+                    TextColor="Black"
+                    CornerRadius="8"
+                    HeightRequest="50"
+                    Margin="500,20,500,0"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
